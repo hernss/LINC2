@@ -1,8 +1,15 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Copyright (c) 2017-2018 The Proton Core developers
+# Copyright (c) 2018-2019 The Linc Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 ACLOCAL_AMFLAGS = -I build-aux/m4
 SUBDIRS = src
 .PHONY: deploy FORCE
 
 GZIP_ENV="-9n"
+export PYTHONPATH
 
 if BUILD_BITCOIN_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
@@ -206,14 +213,6 @@ total.coverage/.dirstamp: total_coverage.info
 
 cov: test_linc.coverage/.dirstamp total.coverage/.dirstamp
 
-endif
-
-# LINC: disable the test until upstream switches from convoluted comparison tool
-# Ref https://github.com/bitcoin/bitcoin/issues/4545
-if USE_COMPARISON_TOOL
-check-local:
-	## $(MKDIR_P) qa/tmp
-	## @qa/pull-tester/run-bitcoind-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS) 2>&1
 endif
 
 dist_noinst_SCRIPTS = autogen.sh
