@@ -7,12 +7,10 @@
 
 #include "chainparams.h"
 #include "consensus/merkle.h"
-
 #include <stdio.h>
 #include "tinyformat.h"
 #include "util.h"
 #include "utilstrencodings.h"
-
 #include <assert.h>
 
 #include <boost/assign/list_of.hpp>
@@ -164,13 +162,15 @@ public:
             (  5900, uint256S("0x000000000c36c7a21a77b9b0610b6abfeba1f397de80333bdf608de3be77a245"))
             (  6200, uint256S("0x000000d1c2d7e422860d402afb2d59fdfda9fed098a0048d200f67b89fc60228"))
             (  17500, uint256S("0x000000002b2ea074603f98e4ee36ce50445dceb625962e6dc6d38be2486c8547"))
-            (  22450, uint256S("0x000000006d63c7a0ab403310e2213664d81899c152554210856b8e19cbd77638")),
-            1527548150, // * UNIX timestamp of last checkpoint block
-            28315,    // * total number of transactions between genesis and last checkpoint
+            (  22450, uint256S("0x000000006d63c7a0ab403310e2213664d81899c152554210856b8e19cbd77638"))
+			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2")),
+            1547619871, // * UNIX timestamp of last checkpoint block
+            191572,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1500        // * estimated number of transactions per day after checkpoint
         };
 
+/*
         registeredPools = boost::assign::map_list_of
         (0,     std::set<std::string>() )
         (25200, boost::assign::list_of<std::string> 
@@ -181,6 +181,7 @@ public:
                     ("LPeebZHVdKpVJcLZEJqYzTAf3hV6PDqJ3f")  // BSOD
                     ("LiHjnMV83HpFfD3DzjCU9bdkV3SboR3cyt")  // WeekendPool
                 .convert_to_container<std::set<std::string> >()  );
+*/
     }
 };
 static CMainParams mainParams;
@@ -288,8 +289,11 @@ public:
             0         // * estimated number of transactions per day after checkpoint
         };
 
+/*
         registeredPools = boost::assign::map_list_of
         (0,     std::set<std::string>());
+				.convert_to_container<std::set<std::string> >()  );
+*/
     }
 };
 static CTestNetParams testNetParams;
@@ -306,7 +310,7 @@ public:
         consensus.nMasternodePaymentsIncreaseBlock = 350;
         consensus.nMasternodePaymentsIncreasePeriod = 10;
         consensus.nDevFundPaymentsStartBlock = 21600;
-        consensus.devFundPaymentsAddress = "LZxvv1WkcsFoRVu6pEZUKumkhV2XGqSmjP";
+        consensus.devFundPaymentsAddress = "LfU6mcp6TxTKGw38dyhGrf7ofTovJ9rfyd";
         consensus.nPoolRegistrationStartBlock = 0x7fffffff;
         consensus.nSameForgerPenaltyStartBlock = 0x7fffffff;
         consensus.nInstantSendKeepLock = 6;
@@ -353,6 +357,19 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x000001cb43c3505462b0d56f357ad7cacb87db76a97ee8b119666ad051f60918"));
         assert(genesis.hashMerkleRoot == uint256S("0x984e1a31140f65ba4dbef8b5d22a5d1a2363bc43898107a9fa88cfd2dde44c9f"));
 
+        // Regtest LINC addresses start with 'r'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,122);
+        // Regtest LINC script addresses start with '8' or '9'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
+        // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        // Regtest LINC BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+        // Regtest LINC BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+        // Regtest LINC BIP44 coin type is '1' (All coin's testnet default)
+        base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
+
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
 
@@ -371,25 +388,16 @@ public:
             0,
             0
         };
-        
+/*
         registeredPools = boost::assign::map_list_of
         (0,     std::set<std::string>());
+                .convert_to_container<std::set<std::string> >()  );
+*/
+	}
 
-        // Regtest LINC addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,122);
-        // Regtest LINC script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
-        // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest LINC BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest LINC BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Regtest LINC BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
-   }
 };
 static CRegTestParams regTestParams;
+
 
 static CChainParams *pCurrentParams = 0;
 

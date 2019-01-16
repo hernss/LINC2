@@ -314,7 +314,7 @@ QT_TRANSLATE_NOOP("linc-core", "Connect to a node to retrieve peer addresses, an
 QT_TRANSLATE_NOOP("linc-core", "Connection options:"),
 QT_TRANSLATE_NOOP("linc-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("linc-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("linc-core", "Copyright (C) 2018 The LINC Core Developers"),
+QT_TRANSLATE_NOOP("linc-core", "Copyright (C) 2019 The LINC Core Developers"),
 QT_TRANSLATE_NOOP("linc-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("linc-core", "Could not parse masternode.conf"),
 QT_TRANSLATE_NOOP("linc-core", "Debugging/Testing options:"),
