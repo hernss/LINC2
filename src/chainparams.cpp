@@ -163,25 +163,26 @@ public:
             (  6200, uint256S("0x000000d1c2d7e422860d402afb2d59fdfda9fed098a0048d200f67b89fc60228"))
             (  17500, uint256S("0x000000002b2ea074603f98e4ee36ce50445dceb625962e6dc6d38be2486c8547"))
             (  22450, uint256S("0x000000006d63c7a0ab403310e2213664d81899c152554210856b8e19cbd77638"))
-			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2")),
-            1547619871, // * UNIX timestamp of last checkpoint block
-            191572,    // * total number of transactions between genesis and last checkpoint
+			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2"))
+			(  172165, uint256S("0x00000000060f2fc034922756451c93a36d9ae728da8eaf9e3c82830e4bff67ee")),
+            1548141934, // * UNIX timestamp of last checkpoint block
+            195368,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1500        // * estimated number of transactions per day after checkpoint
         };
 
-/*
-        registeredPools = boost::assign::map_list_of
-        (0,     std::set<std::string>() )
+
+		registeredPools = boost::assign::map_list_of
+        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >())
         (25200, boost::assign::list_of<std::string> 
-                    ("LNg5rEQFKTDPzcFMJjZPyygPis1q8s6AYT")  // LINC
-                    ("LPvR4Hjs2KT5NCBD5fATCxuY2n9Pd7yRMu")  // Saltpool
-                    ("LKaYw79j6j7ZKRp2HmgLAUdpafsjJ9hFUh")  // Hash4life
-                    ("LcByXiuQnAn55zAFTSUzmjysZXzUH3uX1P")  // FairMine
-                    ("LPeebZHVdKpVJcLZEJqYzTAf3hV6PDqJ3f")  // BSOD
-                    ("LiHjnMV83HpFfD3DzjCU9bdkV3SboR3cyt")  // WeekendPool
+                    ("LNg5rEQFKTDPzcFMJjZPyygPis1q8s6AYT")
+                    ("LPvR4Hjs2KT5NCBD5fATCxuY2n9Pd7yRMu")
+                    ("LKaYw79j6j7ZKRp2HmgLAUdpafsjJ9hFUh")
+                    ("LcByXiuQnAn55zAFTSUzmjysZXzUH3uX1P")
+                    ("LPeebZHVdKpVJcLZEJqYzTAf3hV6PDqJ3f")
+                    ("LiHjnMV83HpFfD3DzjCU9bdkV3SboR3cyt")
                 .convert_to_container<std::set<std::string> >()  );
-*/
+
     }
 };
 static CMainParams mainParams;
@@ -289,11 +290,10 @@ public:
             0         // * estimated number of transactions per day after checkpoint
         };
 
-/*
+
         registeredPools = boost::assign::map_list_of
-        (0,     std::set<std::string>());
-				.convert_to_container<std::set<std::string> >()  );
-*/
+        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
+
     }
 };
 static CTestNetParams testNetParams;
@@ -388,11 +388,10 @@ public:
             0,
             0
         };
-/*
+
         registeredPools = boost::assign::map_list_of
-        (0,     std::set<std::string>());
-                .convert_to_container<std::set<std::string> >()  );
-*/
+        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
+
 	}
 
 };

@@ -35,14 +35,14 @@ static const int SPORK_16_DEVFUND_PAYMENT_ENFORCEMENT                   = 10015;
 static const int64_t SPORK_2_INSTANTSEND_ENABLED_DEFAULT                = 4070908800ULL;// OFF
 static const int64_t SPORK_3_INSTANTSEND_BLOCK_FILTERING_DEFAULT        = 0;            // ON
 static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 1000 LINC
-static const int64_t SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT     = 1525550400;// ON
+static const int64_t SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT     = 1548374400;// ON
 static const int64_t SPORK_9_SUPERBLOCKS_ENABLED_DEFAULT                = 4070908800ULL;// OFF
 static const int64_t SPORK_10_MASTERNODE_PAY_UPDATED_NODES_DEFAULT      = 4070908800ULL;// OFF
 static const int64_t SPORK_12_RECONSIDER_BLOCKS_DEFAULT                 = 0;            // 0 BLOCKS
 static const int64_t SPORK_13_OLD_SUPERBLOCK_FLAG_DEFAULT               = 4070908800ULL;// OFF
 static const int64_t SPORK_14_REQUIRE_SENTINEL_FLAG_DEFAULT             = 4070908800ULL;// OFF
 static const int64_t SPORK_15_DARKSEND_ENABLED_DEFAULT                  = 4070908800ULL;// OFF
-static const int64_t SPORK_16_DEVFUND_PAYMENT_ENFORCEMENT_DEFAULT       = 1527854400;// ON
+static const int64_t SPORK_16_DEVFUND_PAYMENT_ENFORCEMENT_DEFAULT       = 1548374400;// ON
 
 extern std::map<uint256, CSporkMessage> mapSporks;
 extern CSporkManager sporkManager;
