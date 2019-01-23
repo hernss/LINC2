@@ -146,6 +146,11 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         return UintToArith256(params.powLimit).GetCompact();
     }
 
+    //HF slow start 2
+    if (pindexLast->nHeight >= HF_ACTIVATION_BLOCK_ONE && pindexLast->nHeight <= HF_ACTIVATION_BLOCK_ONE) {
+        return UintToArith256(params.powLimit).GetCompact();
+    }
+    
     // mainnet/regtest share a configuration 
     if (Params().NetworkIDString() == CBaseChainParams::MAIN || Params().NetworkIDString() == CBaseChainParams::REGTEST) {
         if (pindexLast->nHeight + 1 >= params.nPowDGWHeight) retarget = DIFF_DGW;

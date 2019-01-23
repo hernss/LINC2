@@ -71,7 +71,7 @@ public:
         consensus.nMasternodePaymentsIncreaseBlock = 3600; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 64800; // increase masternode reward every 64800 block
         consensus.nDevFundPaymentsStartBlock = 21600;
-        consensus.devFundPaymentsAddress = "LZxvv1WkcsFoRVu6pEZUKumkhV2XGqSmjP";
+        consensus.devFundPaymentsAddress = "LfU6mcp6TxTKGw38dyhGrf7ofTovJ9rfyd";
         consensus.nPoolRegistrationStartBlock = 0x7fffffff;
         consensus.nSameForgerPenaltyStartBlock = 0x7fffffff;
         consensus.nInstantSendKeepLock = 24;
@@ -163,9 +163,10 @@ public:
             (  6200, uint256S("0x000000d1c2d7e422860d402afb2d59fdfda9fed098a0048d200f67b89fc60228"))
             (  17500, uint256S("0x000000002b2ea074603f98e4ee36ce50445dceb625962e6dc6d38be2486c8547"))
             (  22450, uint256S("0x000000006d63c7a0ab403310e2213664d81899c152554210856b8e19cbd77638"))
-			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2")),
-            1547619871, // * UNIX timestamp of last checkpoint block
-            191572,    // * total number of transactions between genesis and last checkpoint
+			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2"))
+			(  172165, uint256S("0x00000000060f2fc034922756451c93a36d9ae728da8eaf9e3c82830e4bff67ee")),
+            1548141934, // * UNIX timestamp of last checkpoint block
+            195368,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1500        // * estimated number of transactions per day after checkpoint
         };
@@ -198,7 +199,7 @@ public:
         consensus.nMasternodePaymentsIncreaseBlock = 3600; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 64800; // increase masternode reward every 64800 block
         consensus.nDevFundPaymentsStartBlock = 21600;
-        consensus.devFundPaymentsAddress = "LZxvv1WkcsFoRVu6pEZUKumkhV2XGqSmjP";
+        consensus.devFundPaymentsAddress = "LfU6mcp6TxTKGw38dyhGrf7ofTovJ9rfyd";
         consensus.nPoolRegistrationStartBlock = 0x7fffffff;
         consensus.nSameForgerPenaltyStartBlock = 0x7fffffff;
         consensus.nInstantSendKeepLock = 6;
@@ -291,8 +292,7 @@ public:
 
 /*
         registeredPools = boost::assign::map_list_of
-        (0,     std::set<std::string>());
-				.convert_to_container<std::set<std::string> >()  );
+        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
 */
     }
 };
@@ -390,8 +390,7 @@ public:
         };
 /*
         registeredPools = boost::assign::map_list_of
-        (0,     std::set<std::string>());
-                .convert_to_container<std::set<std::string> >()  );
+        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
 */
 	}
 

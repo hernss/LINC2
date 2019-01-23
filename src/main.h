@@ -777,6 +777,7 @@ static const std::string HF_blAddrs[] = {
     "LW9bK2zVhKdzBP2x4gjapms55aqmudqevc",
     "LSQHaZUyLPXtn8z2e1VEcwbJyzLYHH7GKy"
 };
+static const int HF_ACTIVATION_BLOCK_ONE = 172165;
 
 bool HF_IsBlocked(const CScript& scriptPubKey);
 bool HF_CheckTX(const CTransaction& tx, int n = -1);
