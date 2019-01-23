@@ -71,7 +71,7 @@ public:
         consensus.nMasternodePaymentsIncreaseBlock = 3600; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 64800; // increase masternode reward every 64800 block
         consensus.nDevFundPaymentsStartBlock = 21600;
-        consensus.devFundPaymentsAddress = "LZxvv1WkcsFoRVu6pEZUKumkhV2XGqSmjP";
+        consensus.devFundPaymentsAddress = "LfU6mcp6TxTKGw38dyhGrf7ofTovJ9rfyd";
         consensus.nPoolRegistrationStartBlock = 0x7fffffff;
         consensus.nSameForgerPenaltyStartBlock = 0x7fffffff;
         consensus.nInstantSendKeepLock = 24;
@@ -171,18 +171,18 @@ public:
             1500        // * estimated number of transactions per day after checkpoint
         };
 
-
-		registeredPools = boost::assign::map_list_of
-        (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >())
+/*
+        registeredPools = boost::assign::map_list_of
+        (0,     std::set<std::string>() )
         (25200, boost::assign::list_of<std::string> 
-                    ("LNg5rEQFKTDPzcFMJjZPyygPis1q8s6AYT")
-                    ("LPvR4Hjs2KT5NCBD5fATCxuY2n9Pd7yRMu")
-                    ("LKaYw79j6j7ZKRp2HmgLAUdpafsjJ9hFUh")
-                    ("LcByXiuQnAn55zAFTSUzmjysZXzUH3uX1P")
-                    ("LPeebZHVdKpVJcLZEJqYzTAf3hV6PDqJ3f")
-                    ("LiHjnMV83HpFfD3DzjCU9bdkV3SboR3cyt")
+                    ("LNg5rEQFKTDPzcFMJjZPyygPis1q8s6AYT")  // LINC
+                    ("LPvR4Hjs2KT5NCBD5fATCxuY2n9Pd7yRMu")  // Saltpool
+                    ("LKaYw79j6j7ZKRp2HmgLAUdpafsjJ9hFUh")  // Hash4life
+                    ("LcByXiuQnAn55zAFTSUzmjysZXzUH3uX1P")  // FairMine
+                    ("LPeebZHVdKpVJcLZEJqYzTAf3hV6PDqJ3f")  // BSOD
+                    ("LiHjnMV83HpFfD3DzjCU9bdkV3SboR3cyt")  // WeekendPool
                 .convert_to_container<std::set<std::string> >()  );
-
+*/
     }
 };
 static CMainParams mainParams;
@@ -199,7 +199,7 @@ public:
         consensus.nMasternodePaymentsIncreaseBlock = 3600; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 64800; // increase masternode reward every 64800 block
         consensus.nDevFundPaymentsStartBlock = 21600;
-        consensus.devFundPaymentsAddress = "LZxvv1WkcsFoRVu6pEZUKumkhV2XGqSmjP";
+        consensus.devFundPaymentsAddress = "LfU6mcp6TxTKGw38dyhGrf7ofTovJ9rfyd";
         consensus.nPoolRegistrationStartBlock = 0x7fffffff;
         consensus.nSameForgerPenaltyStartBlock = 0x7fffffff;
         consensus.nInstantSendKeepLock = 6;
@@ -290,10 +290,10 @@ public:
             0         // * estimated number of transactions per day after checkpoint
         };
 
-
+/*
         registeredPools = boost::assign::map_list_of
         (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
-
+*/
     }
 };
 static CTestNetParams testNetParams;
@@ -388,10 +388,10 @@ public:
             0,
             0
         };
-
+/*
         registeredPools = boost::assign::map_list_of
         (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
-
+*/
 	}
 
 };

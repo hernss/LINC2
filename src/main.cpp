@@ -5570,9 +5570,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             pfrom->PushMessage(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
                                strprintf("Version must be %d or greater", PROTOCOL_VERSION));
             pfrom->fDisconnect = true;
-            
-        else
-         
+            return false; 
+        }
+	else
         if (pfrom->nVersion < PROTOCOL_VERSION && pfrom->nStartingHeight < HF_ACTIVATION_BLOCK_ONE) {
             LogPrintf("peer=%d using obsolete version %i that contains sync bug; disconnecting\n", pfrom->id, pfrom->nVersion);
             pfrom->PushMessage(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
