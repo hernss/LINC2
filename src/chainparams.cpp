@@ -118,7 +118,7 @@ public:
         pchMessageStart[3] = 0xb7;
         vAlertPubKey = ParseHex("04409e02e9b6f772af40fc897683076eec4152a5e425834a735f3e850a6493267f9864bc6c61df584e29e218d12d99ecb8982c3c1747afc0c81cc7a39a31a1f646");
         nDefaultPort = 17222;
-        nMaxTipAge = 2 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        nMaxTipAge = 72 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1524571200, 1428749, 0x1e0ffff0, 1, 50 * COIN);
@@ -127,10 +127,10 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x984e1a31140f65ba4dbef8b5d22a5d1a2363bc43898107a9fa88cfd2dde44c9f"));
 
 
-        vSeeds.push_back(CDNSSeedData("seed1.linc", "dnsseed1.linc.site"));
-        vSeeds.push_back(CDNSSeedData("seed2.linc", "dnsseed2.linc.site"));
-        vSeeds.push_back(CDNSSeedData("seed3.linc", "dnsseed3.linc.site"));
-        vSeeds.push_back(CDNSSeedData("seed4.linc", "dnsseed4.linc.site"));
+        vSeeds.push_back(CDNSSeedData("lincseed1.ddns.net", "lincseed1.ddns.net"));
+        vSeeds.push_back(CDNSSeedData("lincseed2.ddns.net", "lincseed2.ddns.net"));
+        vSeeds.push_back(CDNSSeedData("lincseed3.ddns.net", "lincseed3.ddns.net"));
+        vSeeds.push_back(CDNSSeedData("lincseed4.ddns.net", "lincseed4.ddns.net"));
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48); // L
@@ -164,9 +164,18 @@ public:
             (  17500, uint256S("0x000000002b2ea074603f98e4ee36ce50445dceb625962e6dc6d38be2486c8547"))
             (  22450, uint256S("0x000000006d63c7a0ab403310e2213664d81899c152554210856b8e19cbd77638"))
 			(  168835, uint256S("0x00000002a092ec7954dbf1e61886fb1699c4e1ab4d3c7783c279953c17133cf2"))
-			(  172165, uint256S("0x00000000060f2fc034922756451c93a36d9ae728da8eaf9e3c82830e4bff67ee")),
-            1548141934, // * UNIX timestamp of last checkpoint block
-            195368,    // * total number of transactions between genesis and last checkpoint
+			(  172165, uint256S("0x00000000060f2fc034922756451c93a36d9ae728da8eaf9e3c82830e4bff67ee"))
+			(  172166, uint256S("0x000007b1e1be7ba87fd3905aba48c475ab11979225d36c5db746b028fd35da91"))
+			(  172167, uint256S("0x000001964c04837f3450fc14f21bdbebecf3f7febb70d4d2e66d492c991f769a"))
+			(  172168, uint256S("0x0000004b8e9cf1e3a4c8efa82da2eeddd18785056504b082d5b94261cc48b0c5"))
+			(  172169, uint256S("0x000000a9e7dd383eab24c963cf8f320cfe75842409ce2ef83b9a62e2337582fa"))
+			(  172170, uint256S("0x0000025fbb5627bd5b89c817435a7819a6ac93cdf9ccaa781d70ff558e296dfe"))
+			(  172180, uint256S("0x0000000d1c2d07c4ebe57cdab7554309bcf503340c42e1aed75b705764f1b3b3"))
+			(  172190, uint256S("0x0000009b803acf6ceb1730476e3fa7404c192e1b0a45647f5d678579d0c9b36c"))
+			(  172200, uint256S("0x000000bb3a7615d8d14e0e6320aad51165f1b8e16136e1f253969aa2cdbb1e0f"))
+			(  172281, uint256S("0x00000003ccc29b25c7e172eee5a77ec2e1fa56015d94eb0b470081ffeb5ded32")),
+            1548448588, // * UNIX timestamp of last checkpoint block
+            195487,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             1500        // * estimated number of transactions per day after checkpoint
         };
@@ -348,7 +357,7 @@ public:
         pchMessageStart[1] = 0xf7;
         pchMessageStart[2] = 0xba;
         pchMessageStart[3] = 0xa1;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        nMaxTipAge = 24 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nDefaultPort = 17444;
         nPruneAfterHeight = 1000;
 
@@ -356,19 +365,6 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x000001cb43c3505462b0d56f357ad7cacb87db76a97ee8b119666ad051f60918"));
         assert(genesis.hashMerkleRoot == uint256S("0x984e1a31140f65ba4dbef8b5d22a5d1a2363bc43898107a9fa88cfd2dde44c9f"));
-
-        // Regtest LINC addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,122);
-        // Regtest LINC script addresses start with '8' or '9'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
-        // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest LINC BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest LINC BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Regtest LINC BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -392,8 +388,19 @@ public:
         registeredPools = boost::assign::map_list_of
         (0,     boost::assign::list_of<std::string> ("").convert_to_container<std::set<std::string> >());
 */
-	}
-
+	        // Regtest LINC addresses start with 'r'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,122);
+        // Regtest LINC script addresses start with '8' or '9'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
+        // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        // Regtest LINC BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+        // Regtest LINC BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+        // Regtest LINC BIP44 coin type is '1' (All coin's testnet default)
+        base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
+   }
 };
 static CRegTestParams regTestParams;
 

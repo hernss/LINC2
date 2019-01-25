@@ -129,6 +129,8 @@ static const bool DEFAULT_ENABLE_REPLACEMENT = false;
 /** Maximum number of headers to announce when relaying blocks with headers message.*/
 static const unsigned int MAX_BLOCKS_TO_ANNOUNCE = 8;
 
+static const int64_t DEFAULT_MAX_TIP_AGE = 24 * 60 * 60;
+
 struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetCheapHash(); }
@@ -156,6 +158,7 @@ extern bool fCheckpointsEnabled;
 extern size_t nCoinCacheUsage;
 extern CFeeRate minRelayTxFee;
 extern bool fAlerts;
+extern int64_t nMaxTipAge;
 extern bool fEnableReplacement;
 
 extern std::map<uint256, int64_t> mapRejectedBlocks;
