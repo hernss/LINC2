@@ -625,9 +625,16 @@ bool CMasternodeBroadcast::CheckOutpoint(int& nDos)
             LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Failed to find Masternode UTXO, masternode=%s\n", vin.prevout.ToStringShort());
             return false;
         }
-        if(coins.vout[vin.prevout.n].nValue != 2500 * COIN) {
-            LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have 2500 LINC, masternode=%s\n", vin.prevout.ToStringShort());
-            return false;
+        if (chainActive.Height() < Params().GetConsensus().nBlockNewCollateralStart) {
+            if (coins.vout[vin.prevout.n].nValue != Params().GetConsensus().OldCollateralAmount * COIN) {
+				LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have 2500 LINC, masternode=%s\n", vin.prevout.ToStringShort());
+				return false;
+			}
+        } else {
+            if (coins.vout[vin.prevout.n].nValue != Params().GetConsensus().NewCollateralAmount * COIN) {
+                LogPrint("masternode", "CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO should have %i LINC, masternode=%s\n", Params().GetConsensus().NewCollateralAmount, vin.prevout.ToStringShort());
+                return false;
+            }
         }
         if(chainActive.Height() - coins.nHeight + 1 < Params().GetConsensus().nMasternodeMinimumConfirmations) {
             LogPrintf("CMasternodeBroadcast::CheckOutpoint -- Masternode UTXO must have at least %d confirmations, masternode=%s\n",

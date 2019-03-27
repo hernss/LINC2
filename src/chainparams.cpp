@@ -66,7 +66,11 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 64800; // every ~90 days
+        consensus.nBlockNewCollateralStart = 215000; 
+        consensus.OldCollateralAmount = 2500;
+        consensus.NewCollateralAmount = 10000;
+
+		consensus.nSubsidyHalvingInterval = 64800; // every ~90 days
         consensus.nMasternodePaymentsStartBlock = 3600; //
         consensus.nMasternodePaymentsIncreaseBlock = 3600; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 64800; // increase masternode reward every 64800 block

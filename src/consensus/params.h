@@ -35,6 +35,10 @@ struct BIP9Deployment {
  * Parameters that influence chain consensus.
  */
 struct Params {
+    int nBlockNewCollateralStart;
+    int OldCollateralAmount;
+    int NewCollateralAmount;
+
     uint256 hashGenesisBlock;
     int nSubsidyHalvingInterval;
     int nMasternodePaymentsStartBlock;
