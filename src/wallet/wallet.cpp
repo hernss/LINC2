@@ -2583,10 +2583,10 @@ bool CWallet::SelectCoinsDark(CAmount nValueMin, CAmount nValueMax, std::vector<
         if (IsCollateralAmount(out.tx->vout[out.i].nValue))
             continue;
         if (chainActive.Height() < Params().GetConsensus().nBlockNewCollateralStart) {
-            if (fMasterNode && out.tx->vout[i].nValue == Params().GetConsensus().OldCollateralAmount * COIN)
+            if (fMasterNode && out.tx->vout[out.i].nValue == Params().GetConsensus().OldCollateralAmount * COIN)
                 continue;
         } else {
-            if (fMasterNode && out.tx->vout[i].nValue == Params().GetConsensus().NewCollateralAmount * COIN)
+            if (fMasterNode && out.tx->vout[out.i].nValue == Params().GetConsensus().NewCollateralAmount * COIN)
                 continue;
         }
      
