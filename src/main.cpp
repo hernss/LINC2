@@ -5565,7 +5565,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             vRecv >> pfrom->fRelayTxes; // set to true after we get the first filter* message
         else
             pfrom->fRelayTxes = true;
-
+        /*
         if (pfrom->nVersion < PROTOCOL_VERSION && pfrom->nStartingHeight < 54500) {
             LogPrintf("peer=%d using obsolete version %i that contains sync bug; disconnecting\n", pfrom->id, pfrom->nVersion);
             pfrom->PushMessage(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
@@ -5573,15 +5573,15 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             pfrom->fDisconnect = true;
             return false; 
         }
-	else
-        if (pfrom->nVersion < PROTOCOL_VERSION && pfrom->nStartingHeight < HF_ACTIVATION_BLOCK_ONE) {
-            LogPrintf("peer=%d using obsolete version %i that contains sync bug; disconnecting\n", pfrom->id, pfrom->nVersion);
-            pfrom->PushMessage(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
-                               strprintf("Version must be %d or greater", PROTOCOL_VERSION));
-            pfrom->fDisconnect = true;
-            return false;
-        }
-
+		else
+			if (pfrom->nVersion < PROTOCOL_VERSION && pfrom->nStartingHeight < HF_ACTIVATION_BLOCK_ONE) {
+				LogPrintf("peer=%d using obsolete version %i that contains sync bug; disconnecting\n", pfrom->id, pfrom->nVersion);
+				pfrom->PushMessage(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
+								   strprintf("Version must be %d or greater", PROTOCOL_VERSION));
+				pfrom->fDisconnect = true;
+				return false;
+			}
+	    */
         // Disconnect if we connected to ourself
         if (nNonce == nLocalHostNonce && nNonce > 1)
         {
